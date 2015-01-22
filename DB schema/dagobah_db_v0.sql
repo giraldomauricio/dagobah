@@ -123,10 +123,10 @@ CREATE TABLE IF NOT EXISTS `Question` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Store_Question`
+-- Table structure for table `Location_Question`
 --
 
-CREATE TABLE IF NOT EXISTS `Store_Question` (
+CREATE TABLE IF NOT EXISTS `Location_Question` (
   `locationId` int(11) NOT NULL,
   `questionId` int(11) NOT NULL,
   `added` date NOT NULL
