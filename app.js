@@ -4,12 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 
 // Database
 var mongo = require('mongoskin');
 console.log(process.env.MONGO_SETTINGS);
 var db = mongo.db(process.env.MONGO_SETTINGS, {native_parser:true});
-//var db = mongo.db("mongodb://dagobah_user:Konnect1@ds041871.mongolab.com:41871/heroku_app33770087", {native_parser:true});
+var SkinStore = require('connect-mongoskin');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
@@ -28,6 +30,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//app.use(session({secret: '1234567890QWERTY'}));
+app.use(session({secret: 'SDFwer234234SDF', cookie: { secure: false, maxAge:86400000 }, store: new SkinStore(db)}));
 
 // Make our db accessible to our router
 app.use(function(req,res,next){

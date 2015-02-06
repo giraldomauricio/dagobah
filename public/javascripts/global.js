@@ -23,22 +23,7 @@ function LoginUser()
         dataType: 'JSON'
     }).done(function( response ) {
 
-        // Check for successful (blank) response
-        if (response.msg === '') {
-
-            // Clear the form inputs
-            $('#addUser fieldset input').val('');
-
-            // Update the table
-            populateTable();
-
-        }
-        else {
-
-            // If something goes wrong, alert the error message that our service returned
-            alert('Error: ' + response.msg);
-
-        }
+        alert(response.msg);
     });
 }
 
@@ -156,6 +141,8 @@ function AddLocation()
             'phone': $('#locationPhone').val(),
             'create_at': new Date(),
             'zipcode': $('#locationZipcode').val(),
+            'city': $('#locationCity').val(),
+            'state': $('#locationState').val(),
             'organization_id': orgId,
             'status': $('#locationStatus').prop("checked")
         }
@@ -246,6 +233,8 @@ function ShowOrganizationInfo(id)
                 $.each(questions, function( index, value ) {
                   tableContent += value.name + "<br/>";
                   tableContent += value.zipcode + "<br/>";
+                    tableContent += value.city + "<br/>";
+                    tableContent += value.state + "<br/>";
                 });
                 $.getJSON( '/admin/get_questions/' + id, function( questions ) {
                     tableContent += "QUESTIONS<br/>";
@@ -287,6 +276,8 @@ function ShowOrganizationInfoBulk(id)
         $.each(data.locations, function( index, value ) {
           tableContent += value.name + "<br/>";
           tableContent += value.zipcode + "<br/>";
+          tableContent += value.city + "<br/>";
+          tableContent += value.state + "<br/>";
         });
         tableContent += "QUESTIONS<br/>";
         $.each(data.questions, function( index, value ) {

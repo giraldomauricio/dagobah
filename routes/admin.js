@@ -2,25 +2,29 @@ var express = require('express');
 var router = express.Router();
 var ObjectID = require('mongoskin').ObjectID;
 var passwordHash = require('password-hash');
-
+/* GET main page. */
+router.get('/', function(req, res, next) {
+  res.render('admin');
+});
 /*
  * POST to create_organization.
  */
 router.post('/create_organization', function(req, res) {
-
     var db = req.db;
-    
+    req.session.org = req.body.name
     db.collection('organization').insert(req.body, function(err, result){
         res.send(
             (err === null) ? { msg: '' } : { msg: err }
         );
     });
+
 });
 /*
  * GET get_organizations.
  */
 router.get('/get_organization', function(req, res) {
     var db = req.db;
+    console.log("just created:" + req.session.org)
     db.collection('organization').find().toArray(function (err, items) {
         res.json(items);
     });
