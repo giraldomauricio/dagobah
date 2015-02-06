@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 
 // Database
 var mongo = require('mongoskin');
-//var db = mongo.db("mongodb://localhost:27017/dagobah", {native_parser:true});
-var db = mongo.db("mongodb://dagobah_user:Konnect1@ds041871.mongolab.com:41871/heroku_app33770087", {native_parser:true});
+console.log(process.env.MONGO_SETTINGS);
+var db = mongo.db(process.env.MONGO_SETTINGS, {native_parser:true});
+//var db = mongo.db("mongodb://dagobah_user:Konnect1@ds041871.mongolab.com:41871/heroku_app33770087", {native_parser:true});
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
