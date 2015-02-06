@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1 Organization
+  input#organizationName(type='text', placeholder='Organization Name')
+  br
+  input#btnAddOrg(type='button', value='Create Organization')
+  br
+  #OrgList
+  #OrgInfo
+  #ProfileForm(style='display:none')
+    span name:
+    input#profileName(type='text')
+    br
+    span email:
+    input#profileEmail(type='text')
+    br
+    span phone:
+    input#profilePhone(type='text')
+    br
+    span Master:
+    input#profileMaster(type='checkbox')
+    br
+    input#btnAddProfile(type='button', value='Create Organization')
+  #LocationForm(style='display:none')
+    span name:
+    input#locationName(type='text')
+    br
+    span Address 1:
+    input#locationAddress1(type='text')
+    br
+    span Address 2:
+    input#locationAddress1(type='text')
+    br
+    span Phone:
+    input#locationPhone(type='text')
+    br
+    span Zipcode:
+    input#locationZipcode(type='text')
+    br
+    span Status:
+    input#locationStatus(type='checkbox')
+    br
+    input#btnAddLocation(type='button', value='Create Location')
+  #QuestionForm(style='display:none')
+    span Question:
+    input#questionText(type='text')
+    br
+    span Question Type:
+    select#questioType
+      option(value='numeric')  0 - 10
+      option(value='boolean') yes / no
+    br
+    input#btnAddQuestion(type='button', value='AddQuestion')

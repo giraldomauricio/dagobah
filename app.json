@@ -1,0 +1,7 @@
+{
+  "name": "dagobah",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/giraldomauricio/dagobah",
+  "logo": "",
+  "keywords": ["node", "express", "static"]
+}
