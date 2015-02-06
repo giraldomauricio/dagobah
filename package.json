@@ -17,6 +17,7 @@
         "jade": "*",
         "mongodb": "*",
         "mongoskin": "*",
+        "express-session": "*",
         "password-hash": "*"
     },
     "engines": {
